@@ -1,24 +1,21 @@
-import { babel } from '@rollup/plugin-babel';
-import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
-import typescript from '@rollup/plugin-typescript';
-import replacement from 'rollup-plugin-module-replacement';
-import postcss from 'rollup-plugin-postcss';
-import dts from 'rollup-plugin-dts';
-import svgr from '@svgr/rollup';
-import { createRequire } from 'node:module';
-import alias from '@rollup/plugin-alias';
-
-const requireFile = createRequire(import.meta.url);
-const packageJson = requireFile('./package.json');
+const babel = require('@rollup/plugin-babel');
+const peerDepsExternal = require('rollup-plugin-peer-deps-external');
+const resolve = require('@rollup/plugin-node-resolve');
+const commonjs = require('@rollup/plugin-commonjs');
+const typescript = require('@rollup/plugin-typescript');
+const postcss = require('rollup-plugin-postcss');
+const dts = require('rollup-plugin-dts');
+const svgr = require('@svgr/rollup');
+const alias = require('@rollup/plugin-alias');
 const path = require('path');
+const packageJson = require('./package.json');
+
 const Resolver = resolve({
   extensions: ['.mjs', '.ts', '.tsx', '.json', '.js', '.jsx'],
   browser: true,
 });
 
-export default [
+module.exports = [
   {
     input: 'src/index.ts',
     output: [
@@ -66,7 +63,7 @@ export default [
   {
     input: 'lib/index.d.ts',
     output: [{ file: 'lib/index.d.ts', format: 'es' }],
-    plugins: [dts()],
+    plugins: [dts.default()],
     external: [/\.css$/, 'styled-components'],
   },
 ];

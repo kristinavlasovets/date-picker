@@ -1,5 +1,5 @@
 node_modules/
-CalendarByMonthDecorator.jsx
-CalendarByWeekDecorator.jsx
+CalendarByMonthDecorator.tsx
+CalendarByWeekDecorator.tsx
 lib/
-rollup.config.mjs
+rollup.config.js

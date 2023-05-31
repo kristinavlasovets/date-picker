@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
-import { CalendarByMonthDecorator } from '../../utils/decorators/CalendarByMonthDecorator';
+import { CalendarByMonthDecorator } from '@/utils/decorators/CalendarByMonthDecorator';
+
 import CalendarGrid from '../CalendarGrid/CalendarGrid';
 import { CalendarGridProps } from '../CalendarGrid/types';
 

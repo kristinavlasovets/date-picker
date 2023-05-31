@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 
 import MyNextSvg from '@/assets/icons/next.svg';
 import MyPrevSvg from '@/assets/icons/prev.svg';
+import { CalendarByWeekDecorator } from '@/utils/decorators/CalendarByWeekDecorator';
 import {
   getDayVariant,
   getNumberOfDaysinMonth,
@@ -9,7 +10,6 @@ import {
   getTimeFromState,
 } from '@/utils/helpers/CalendarHelpers';
 
-import { CalendarByWeekDecorator } from '../../utils/decorators/CalendarByWeekDecorator';
 import { Icon, IconWrapper, WeekSwitcher } from '../Calendar/styles';
 import { SevenColGrid } from '../CalendarGrid/styles';
 import { CalendarGridProps } from '../CalendarGrid/types';
