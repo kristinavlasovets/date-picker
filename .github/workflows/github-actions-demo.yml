@@ -1,0 +1,22 @@
+name: GitHub Actions
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - name: actions-checkout
+        uses: actions/checkout@v3
+      - name: install modules
+        run: yarn install
+      - name: build project
+        run: yarn run build
+      - name: unit tests
+        run: yarn run test
+      - name: lint code
+        run: yarn run lint
+      - name: format code with prettier
+        run: yarn run format
