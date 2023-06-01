@@ -1,14 +1,14 @@
 {
   "name": "@kristinavlasovets/date-picker-modsen",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
+  "files": [
+    "lib/**/*"
+  ],
   "types": "lib/index.d.ts",
   "license": "MIT",
   "author": "Kristina",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/kristinavlasovets"
-  },
   "scripts": {
     "build": "rollup -c",
     "storybook": "storybook dev -p 6006",
