@@ -57,17 +57,13 @@ const CalendarGridByWeek: FC<CalendarGridProps> = ({
   }, [currentWeek]);
 
   const onHandlerNextWeek = () => {
-    if (days[days.length - 1] === totalDays[totalDays.length - 1]) {
-      return;
-    } else {
+    if (days[days.length - 1] !== totalDays[totalDays.length - 1]) {
       setCurrentWeek((prev) => prev + 1);
     }
   };
 
   const onHandlerPrevWeek = () => {
-    if (days[0] === totalDays[0]) {
-      return;
-    } else {
+    if (days[0] !== totalDays[0]) {
       setCurrentWeek((prev) => prev - 1);
     }
   };

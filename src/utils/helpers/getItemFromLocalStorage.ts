@@ -1,3 +1,2 @@
-export const getItemFromLocalStorage = (key: string): unknown => {
-  return JSON.parse(localStorage.getItem(key)!);
-};
+export const getItemFromLocalStorage = (key: string): unknown =>
+  JSON.parse(localStorage.getItem(key)!);

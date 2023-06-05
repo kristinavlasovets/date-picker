@@ -100,17 +100,17 @@ export const DayItemVariants = {
     borderRadius: '8px',
     color: Colors.WHITE,
   },
-  ['range-start']: {
+  'range-start': {
     background: Colors.BLUE,
     borderRadius: '8px 0px 0px 8px',
     color: Colors.WHITE,
   },
-  ['range-in-between']: {
+  'range-in-between': {
     background: Colors.LIGHT_BLUE,
     borderRadius: 0,
     color: Colors.DARK_BLUE,
   },
-  ['range-end']: {
+  'range-end': {
     background: Colors.DARK_BLUE,
     borderRadius: '0px 8px 8px 0px',
     color: Colors.WHITE,

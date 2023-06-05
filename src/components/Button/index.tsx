@@ -7,8 +7,8 @@ import { ButtonProps } from './types';
 
 const { text } = ButtonText;
 
-const Button: FC<ButtonProps> = ({ onHandlerClearDate }) => {
-  return <ClearButton onClick={onHandlerClearDate}>{text}</ClearButton>;
-};
+const Button: FC<ButtonProps> = ({ onHandlerClearDate }) => (
+  <ClearButton onClick={onHandlerClearDate}>{text}</ClearButton>
+);
 
 export default Button;

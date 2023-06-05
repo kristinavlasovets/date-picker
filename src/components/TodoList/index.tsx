@@ -77,7 +77,7 @@ const TodoList: FC<TodoListProps> = ({
 
   const toggleCompleted = (id: number) => {
     setTodos((prevTodos) => {
-      const todo = prevTodos.find((todo) => todo.id === id);
+      const todo = prevTodos.find((item) => item.id === id);
       if (todo) {
         todo.completed = !todo.completed;
       }
@@ -100,7 +100,8 @@ const TodoList: FC<TodoListProps> = ({
       <HeaderWrapper>
         <Title>{selectedDate && selectedDate.toLocaleDateString()}</Title>
         <Title>
-          {todos.length} {title}
+          {todos.length}
+          {title}
         </Title>
         <CloseIconWrapper>
           <Icon src={MyCloseSvg} alt={closeAlt} onClick={onHandlerClose} />

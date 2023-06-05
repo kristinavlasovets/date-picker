@@ -10,18 +10,16 @@ const Day: FC<DayProps> = ({
   currentday,
   day = 0,
   $showWeekend,
-}) => {
-  return (
-    <DayItem
-      variant={variant}
-      $holidayColor={$holidayColor}
-      onClick={onClick}
-      currentday={currentday}
-      $showWeekend={$showWeekend}
-    >
-      {day}
-    </DayItem>
-  );
-};
+}) => (
+  <DayItem
+    variant={variant}
+    $holidayColor={$holidayColor}
+    onClick={onClick}
+    currentday={currentday}
+    $showWeekend={$showWeekend}
+  >
+    {day}
+  </DayItem>
+);
 
 export default Day;

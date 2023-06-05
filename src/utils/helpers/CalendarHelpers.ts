@@ -2,9 +2,8 @@ import { dayNames } from '@/constants';
 
 import { GetDayVariantProps } from './types';
 
-export const getNumberOfDaysInMonth = (year: number, month: number) => {
-  return new Date(year, month + 1, 0).getDate();
-};
+export const getNumberOfDaysInMonth = (year: number, month: number) =>
+  new Date(year, month + 1, 0).getDate();
 
 export const getSortedDays = (year: number, month: number) => {
   const dayIndex = new Date(year, month, 1).getDay();
@@ -30,9 +29,7 @@ export const getTimeFromState = (
   day: number,
   currentYear: number,
   currentMonth: number
-) => {
-  return new Date(currentYear, currentMonth, day).getTime();
-};
+) => new Date(currentYear, currentMonth, day).getTime();
 
 export const getDayVariant = (options: GetDayVariantProps) => {
   const {

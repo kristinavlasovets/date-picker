@@ -20,26 +20,24 @@ const CalendarGridByMonth: FC<CalendarGridProps> = ({
   showWeekend,
   isByMonth,
   onHandlerSelectDate,
-}) => {
-  return (
-    <CalendarGrid
-      currentYear={currentYear}
-      currentMonth={currentMonth}
-      minDate={minDate}
-      maxDate={maxDate}
-      startDate={startDate}
-      endDate={endDate}
-      selectedDate={selectedDate}
-      defaultValue={defaultValue}
-      holidays={holidays}
-      withRange={withRange}
-      onHandlerSelectDate={onHandlerSelectDate}
-      $holidayColor={$holidayColor}
-      showWeekend={showWeekend}
-      isByMonth={isByMonth}
-      isDateByInput={false}
-    />
-  );
-};
+}) => (
+  <CalendarGrid
+    currentYear={currentYear}
+    currentMonth={currentMonth}
+    minDate={minDate}
+    maxDate={maxDate}
+    startDate={startDate}
+    endDate={endDate}
+    selectedDate={selectedDate}
+    defaultValue={defaultValue}
+    holidays={holidays}
+    withRange={withRange}
+    onHandlerSelectDate={onHandlerSelectDate}
+    $holidayColor={$holidayColor}
+    showWeekend={showWeekend}
+    isByMonth={isByMonth}
+    isDateByInput={false}
+  />
+);
 
 export default CalendarByMonthDecorator(CalendarGridByMonth);

@@ -54,7 +54,7 @@ export const Default: Story = {
     defaultEndDate: nextDay,
     minDate: new Date(2023, 4, 20),
     maxDate: new Date(2023, 5, 30),
-    holidays: holidays,
+    holidays,
   },
   render: (args) => {
     const defaultStartDate = new Date(args.defaultStartDate);

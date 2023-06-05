@@ -62,7 +62,7 @@ export const Default: Story = {
     minDate: new Date(2023, 4, 24),
     maxDate: new Date(2023, 7, 23),
     variant: 'month',
-    holidays: holidays,
+    holidays,
   },
 
   render: (args) => {
