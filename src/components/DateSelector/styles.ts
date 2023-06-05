@@ -27,10 +27,8 @@ export const Input = styled.input`
   width: ${({ theme }) => theme.width.xll}px;
   height: ${({ theme }) => theme.height.ss}px;
   color: ${({ theme }) => theme.colors.DARK_GRAY};
-  font-family: 'Open Sans', sans-serif;
   font-weight: ${({ theme }) => theme.fontWeights.s};
   font-size: ${({ theme }) => theme.fontSizes.m}px;
-  line-height: 140%;
   border: none;
 `;
 
@@ -43,8 +41,8 @@ export const IconWrapper = styled.button`
 `;
 
 export const Icon = styled.img`
-  width: ${({ theme }) => theme.width.xl}%;
-  height: ${({ theme }) => theme.height.xl}%;
+  width: ${({ theme }) => theme.width.s}px;
+  height: ${({ theme }) => theme.height.s}px;
 
   &:hover {
     transform: scale(1.2);
@@ -57,8 +55,6 @@ export const ErrorMessage = styled.p`
   padding: ${({ theme }) => theme.paddings.xs}px;
   background: ${({ theme }) => theme.colors.WHITE};
   color: ${({ theme }) => theme.colors.DARK_BLUE};
-  font-family: 'Open Sans', sans-serif;
   font-weight: ${({ theme }) => theme.fontWeights.s};
   font-size: ${({ theme }) => theme.fontSizes.xxs}px;
-  line-height: 140%;
 `;

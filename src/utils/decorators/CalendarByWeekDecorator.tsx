@@ -1,5 +1,6 @@
-import { CalendarGridProps } from '@/components/CalendarGrid/types';
 import React from 'react';
+
+import { CalendarGridProps } from '@/components/CalendarGrid/types';
 
 export const CalendarByWeekDecorator = (
   WrappedComponent: React.ElementType

@@ -1,11 +1,11 @@
 import React, { Component, ErrorInfo } from 'react';
 
-import { errorBoundaryText } from '@/constants/config/components/errorBoundary';
+import { ErrorBoundaryText } from '@/constants';
 
 import { ErrorMessage, Wrapper } from './styles';
 import { ErrorBoundaryProps, ErrorBoundaryState } from './types';
 
-const { message } = errorBoundaryText;
+const { message } = ErrorBoundaryText;
 
 class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {

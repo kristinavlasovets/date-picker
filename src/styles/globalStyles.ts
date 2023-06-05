@@ -2,7 +2,7 @@ import { createGlobalStyle, DefaultTheme } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle<{ theme: DefaultTheme }>`
 * {
-    font-family: 'Poppins', 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;

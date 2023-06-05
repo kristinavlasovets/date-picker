@@ -1,6 +1,8 @@
-import { dayNames } from '@/constants/config/dayNames';
+import { dayNames } from '@/constants';
 
-export const getNumberOfDaysinMonth = (year: number, month: number) => {
+import { GetDayVariantProps } from './types';
+
+export const getNumberOfDaysInMonth = (year: number, month: number) => {
   return new Date(year, month + 1, 0).getDate();
 };
 
@@ -11,7 +13,7 @@ export const getSortedDays = (year: number, month: number) => {
 };
 
 export const getRange = (start: number, end: number) => {
-  const length = Math.abs((end - start) / 1);
+  const length = Math.abs(end - start);
 
   const { result } = Array.from({ length }).reduce(
     ({ result, current }) => ({
@@ -32,20 +34,6 @@ export const getTimeFromState = (
   return new Date(currentYear, currentMonth, day).getTime();
 };
 
-interface GetDayVariantProps {
-  day: number;
-  minDate?: Date;
-  maxDate?: Date;
-  startDate?: Date;
-  endDate?: Date;
-  currentYear: number;
-  currentMonth: number;
-  selectedDate: Date;
-  defaultValue: Date;
-  holidays: Date[];
-  withRange: boolean;
-}
-
 export const getDayVariant = (options: GetDayVariantProps) => {
   const {
     day,
@@ -59,11 +47,12 @@ export const getDayVariant = (options: GetDayVariantProps) => {
     defaultValue,
     holidays,
     withRange,
+    isDateByInput,
   } = options;
 
   if (
     holidays
-      .map((item) => item.getTime())
+      .map(({ day, month }) => getTimeFromState(day, currentYear, month))
       .includes(new Date(currentYear, currentMonth, day).getTime())
   ) {
     return 'holiday';
@@ -79,6 +68,17 @@ export const getDayVariant = (options: GetDayVariantProps) => {
   }
 
   if (
+    isDateByInput &&
+    withRange &&
+    selectedDate.getTime() ===
+      new Date(currentYear, currentMonth, day).getTime() &&
+    defaultValue === startDate
+  ) {
+    return 'selected';
+  }
+
+  if (
+    !isDateByInput &&
     withRange &&
     selectedDate.getTime() ===
       new Date(currentYear, currentMonth, day).getTime() &&
@@ -99,6 +99,16 @@ export const getDayVariant = (options: GetDayVariantProps) => {
   }
 
   if (
+    isDateByInput &&
+    withRange &&
+    selectedDate.getTime() ===
+      new Date(currentYear, currentMonth, day).getTime()
+  ) {
+    return 'selected';
+  }
+
+  if (
+    !isDateByInput &&
     withRange &&
     selectedDate.getTime() ===
       new Date(currentYear, currentMonth, day).getTime()

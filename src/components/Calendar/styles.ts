@@ -27,7 +27,7 @@ export const Header = styled.div`
 `;
 
 export const Title = styled.div`
-  width: ${({ theme }) => theme.width.xl}%;
+  width: ${({ theme }) => theme.width.xxl}px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -36,12 +36,11 @@ export const Title = styled.div`
 
 export const WeekSwitcher = styled.div`
   margin-top: ${({ theme }) => theme.margins.s}px;
-  width: ${({ theme }) => theme.width.xl}%;
+  width: ${({ theme }) => theme.width.xxl}px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-family: 'Open Sans', sans-serif;
   font-weight: ${({ theme }) => theme.fontWeights.s};
   font-size: ${({ theme }) => theme.fontSizes.s}px;
   color: ${({ theme }) => theme.colors.DARK_GRAY};
@@ -53,7 +52,6 @@ export const Month = styled.button<CalendarStylesProps>`
   border: none;
   background: transparent;
   cursor: pointer;
-  font-family: 'Open Sans', sans-serif;
   font-weight: ${({ theme }) => theme.fontWeights.l};
   font-size: ${({ theme }) => theme.fontSizes.s}px;
   color: ${({ theme, $textColor }) =>
@@ -71,7 +69,6 @@ export const Year = styled.button<CalendarStylesProps>`
   border: none;
   background: transparent;
   cursor: pointer;
-  font-family: 'Open Sans', sans-serif;
   font-weight: ${({ theme }) => theme.fontWeights.l};
   font-size: ${({ theme }) => theme.fontSizes.s}px;
   color: ${({ theme, $textColor }) =>
@@ -91,8 +88,8 @@ export const IconWrapper = styled.button`
 `;
 
 export const Icon = styled.img`
-  width: ${({ theme }) => theme.width.xl}%;
-  height: ${({ theme }) => theme.height.xl}%;
+  width: ${({ theme }) => theme.width.s}px;
+  height: ${({ theme }) => theme.width.s}px;
 
   &:hover {
     transform: scale(1.2);
@@ -118,11 +115,10 @@ export const TwoColGrid = styled.div`
   padding: ${({ theme }) => theme.paddings.xs}px;
   border: 1px solid ${({ theme }) => theme.colors.BORDER_GRAY};
   border-radius: ${({ theme }) => theme.borderRadiuses.m}px;
-  z-index: 10;
+  z-index: ${({ theme }) => theme.zIndexes.m};
 `;
 
 export const Weekday = styled.p<CalendarStylesProps>`
-  font-family: 'Open Sans', sans-serif;
   font-weight: ${({ theme }) => theme.fontWeights.l};
   font-size: ${({ theme }) => theme.fontSizes.s}px;
   color: ${({ theme, $textColor }) =>
@@ -135,7 +131,6 @@ export const Toggle = styled.button`
   height: ${({ theme }) => theme.height.l}px;
   background: ${({ theme }) => theme.colors.WHITE};
   border: none;
-  font-family: 'Open Sans', sans-serif;
   font-weight: ${({ theme }) => theme.fontWeights.s};
   font-size: ${({ theme }) => theme.fontSizes.xs}px;
   color: ${({ theme }) => theme.colors.DARK_BLUE};

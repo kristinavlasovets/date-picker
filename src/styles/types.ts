@@ -39,6 +39,7 @@ export interface ICommonTheme {
   };
   width: {
     s: number;
+    ss: number;
     m: number;
     l: number;
     xl: number;
@@ -56,5 +57,8 @@ export interface ICommonTheme {
     xl: number;
     xxl: number;
     xxxl: number;
+  };
+  zIndexes: {
+    m: number;
   };
 }

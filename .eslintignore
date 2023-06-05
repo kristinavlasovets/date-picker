@@ -1,5 +1,4 @@
 node_modules/
-CalendarByMonthDecorator.tsx
-CalendarByWeekDecorator.tsx
 lib/
 rollup.config.js
+fileTransformer.js

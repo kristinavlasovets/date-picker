@@ -1,4 +1,4 @@
-import { getNumberOfDaysinMonth } from './CalendarHelpers';
+import { getNumberOfDaysInMonth } from './CalendarHelpers';
 
 export const getValidatedDate = (inputValue: string): boolean => {
   const validDateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
@@ -12,7 +12,7 @@ export const getValidatedDate = (inputValue: string): boolean => {
     return false;
   }
 
-  if (day < 1 || day > getNumberOfDaysinMonth(year, month - 1)) {
+  if (day < 1 || day > getNumberOfDaysInMonth(year, month - 1)) {
     return false;
   }
   return true;

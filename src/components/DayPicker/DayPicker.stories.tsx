@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { holidays } from '@/constants/config/holidays';
+import { holidays } from '@/constants';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import DayPicker from './DayPicker';
+import DayPicker from '.';
 
 const meta: Meta<typeof DayPicker> = {
   title: 'Components/DayPicker',
@@ -44,7 +44,7 @@ const meta: Meta<typeof DayPicker> = {
       control: { type: 'date' },
     },
     variant: {
-      options: ['day', 'week', 'month'],
+      options: ['month', 'week', 'year'],
       control: { type: 'radio' },
     },
     $holidayColor: { control: 'color' },
@@ -61,7 +61,7 @@ export const Default: Story = {
     defaultValue: new Date(),
     minDate: new Date(2023, 4, 24),
     maxDate: new Date(2023, 7, 23),
-    variant: 'day',
+    variant: 'month',
     holidays: holidays,
   },
 

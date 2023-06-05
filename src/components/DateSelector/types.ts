@@ -3,4 +3,5 @@ export interface DateSelectorProps {
   maxDate: Date;
   onHandlerSelectDate: (date: Date) => void;
   onHandlerShowPopUp: () => void;
+  onHandlerSetDayByInput: (action: boolean) => void;
 }

@@ -1,4 +1,4 @@
-import { Colors } from '@/constants/styles/colors';
+import { Colors } from '@/types';
 
 import { ICommonTheme } from './types';
 
@@ -43,6 +43,7 @@ export const commonTheme: ICommonTheme = {
   },
   width: {
     s: 16,
+    ss: 20,
     m: 32,
     l: 36,
     xl: 100,
@@ -60,5 +61,8 @@ export const commonTheme: ICommonTheme = {
     xl: 100,
     xxl: 241,
     xxxl: 319,
+  },
+  zIndexes: {
+    m: 10,
   },
 };

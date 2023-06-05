@@ -9,7 +9,6 @@ export const ClearButton = styled.button`
     ${({ theme }) => theme.borderRadiuses.s}px
     ${({ theme }) => theme.borderRadiuses.m}px
     ${({ theme }) => theme.borderRadiuses.m}px;
-  font-family: 'Open Sans', sans-serif;
   font-weight: ${({ theme }) => theme.fontWeights.m};
   font-size: ${({ theme }) => theme.fontSizes.xxs}px;
   cursor: pointer;

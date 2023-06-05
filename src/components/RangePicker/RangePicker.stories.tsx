@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { holidays } from '@/constants/config/holidays';
+import { holidays } from '@/constants';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import RangePicker from './RangePicker';
+import RangePicker from '.';
 
 const meta: Meta<typeof RangePicker> = {
   title: 'Components/Range Picker',
@@ -30,7 +30,7 @@ const meta: Meta<typeof RangePicker> = {
       },
     },
     variant: {
-      options: ['day', 'week', 'month'],
+      options: ['month', 'week', 'year'],
       control: { type: 'radio' },
     },
     $holidayColor: { control: 'color' },
@@ -49,7 +49,7 @@ nextDay.setDate(new Date().getDate() + 6);
 
 export const Default: Story = {
   args: {
-    variant: 'day',
+    variant: 'month',
     defaultStartDate: currentDay,
     defaultEndDate: nextDay,
     minDate: new Date(2023, 4, 20),

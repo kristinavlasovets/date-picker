@@ -7,12 +7,13 @@ export interface CalendarGridProps {
   endDate?: Date;
   selectedDate: Date;
   defaultValue: Date;
-  holidays: Date[];
+  holidays: { month: number; day: number }[];
   withRange: boolean;
   $holidayColor: string;
   showWeekend: boolean;
   isByMonth?: boolean;
   isByWeek?: boolean;
+  isDateByInput: boolean;
 
   onHandlerSelectDate: (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
