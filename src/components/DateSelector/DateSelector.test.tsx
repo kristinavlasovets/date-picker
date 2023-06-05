@@ -15,6 +15,7 @@ describe('rendering DateSelector', () => {
           maxDate={new Date(2023, 7, 23)}
           onHandlerSelectDate={() => ({})}
           onHandlerShowPopUp={() => ({})}
+          onHandlerSetDayByInput={() => ({})}
         />
       </ThemeProvider>
     );
@@ -32,6 +33,7 @@ describe('rendering DateSelector', () => {
           maxDate={new Date(2023, 7, 23)}
           onHandlerSelectDate={() => ({})}
           onHandlerShowPopUp={mockOnHandlerShowPopUp}
+          onHandlerSetDayByInput={() => ({})}
         />
       </ThemeProvider>
     );
@@ -49,6 +51,7 @@ describe('rendering DateSelector', () => {
           maxDate={new Date(2023, 7, 23)}
           onHandlerSelectDate={() => ({})}
           onHandlerShowPopUp={() => ({})}
+          onHandlerSetDayByInput={() => ({})}
         />
       </ThemeProvider>
     );
@@ -67,6 +70,7 @@ describe('rendering DateSelector', () => {
           maxDate={new Date(2023, 7, 23)}
           onHandlerSelectDate={() => ({})}
           onHandlerShowPopUp={() => ({})}
+          onHandlerSetDayByInput={() => ({})}
         />
       </ThemeProvider>
     );
@@ -86,6 +90,7 @@ describe('rendering DateSelector', () => {
           maxDate={new Date(2023, 7, 23)}
           onHandlerSelectDate={() => ({})}
           onHandlerShowPopUp={() => ({})}
+          onHandlerSetDayByInput={() => ({})}
         />
       </ThemeProvider>
     );

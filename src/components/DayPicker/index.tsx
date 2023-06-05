@@ -16,6 +16,7 @@ const DayPicker: FC<DayPickerProps> = ({
   minDate,
   maxDate,
   variant,
+  beginningOfTheWeek,
   holidays,
   $holidayColor,
   $textColor,
@@ -69,6 +70,7 @@ const DayPicker: FC<DayPickerProps> = ({
           <Calendar
             value={value}
             variant={variant}
+            beginningOfTheWeek={beginningOfTheWeek}
             minDate={minDate}
             maxDate={maxDate}
             startDate={startDate}

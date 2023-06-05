@@ -39,6 +39,7 @@ yarn add @kristinavlasovets/date-picker-modsen
 minDate: Date;
 maxDate: Date;
 variant: 'month' | 'week' | 'year';
+beginningOfTheWeek: 'sunday' | 'monday';
 holidays: { month: number; day: number }[];
 $holidayColor: string;
 $textColor: string;

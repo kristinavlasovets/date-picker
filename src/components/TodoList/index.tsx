@@ -99,10 +99,7 @@ const TodoList: FC<TodoListProps> = ({
     <Wrapper>
       <HeaderWrapper>
         <Title>{selectedDate && selectedDate.toLocaleDateString()}</Title>
-        <Title>
-          {todos.length}
-          {title}
-        </Title>
+        <Title>{`${todos.length} ${title}`}</Title>
         <CloseIconWrapper>
           <Icon src={MyCloseSvg} alt={closeAlt} onClick={onHandlerClose} />
         </CloseIconWrapper>

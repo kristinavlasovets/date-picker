@@ -33,6 +33,10 @@ const meta: Meta<typeof RangePicker> = {
       options: ['month', 'week', 'year'],
       control: { type: 'radio' },
     },
+    beginningOfTheWeek: {
+      options: ['sunday', 'monday'],
+      control: { type: 'radio' },
+    },
     $holidayColor: { control: 'color' },
     $textColor: { control: 'color' },
   },
@@ -50,6 +54,7 @@ nextDay.setDate(new Date().getDate() + 6);
 export const Default: Story = {
   args: {
     variant: 'month',
+    beginningOfTheWeek: 'sunday',
     defaultStartDate: currentDay,
     defaultEndDate: nextDay,
     minDate: new Date(2023, 4, 20),

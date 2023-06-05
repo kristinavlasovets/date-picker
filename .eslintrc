@@ -40,7 +40,10 @@
     "import/export": "off",
     "func-names": "off",
     "@typescript-eslint/no-unused-expressions": "off",
-    "operator-linebreak": "off"
+    "operator-linebreak": "off",
+    "react/no-array-index-key": "off",
+    "function-paren-newline": "off",
+    "import/no-cycle": "off"
   },
   "overrides": [
     {

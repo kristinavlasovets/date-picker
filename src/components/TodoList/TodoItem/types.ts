@@ -3,6 +3,7 @@ export interface ITodoItem {
   day: number;
   title: string;
   completed: boolean;
+
   toggleCompleted?: (id: number) => void;
   deleteTodo?: (id: number) => void;
 }

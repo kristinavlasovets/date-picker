@@ -14,5 +14,6 @@ export interface DayProps {
   day?: number | string;
   disabled?: boolean;
   $showWeekend: boolean;
+
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }

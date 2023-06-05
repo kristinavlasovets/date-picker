@@ -47,6 +47,10 @@ const meta: Meta<typeof DayPicker> = {
       options: ['month', 'week', 'year'],
       control: { type: 'radio' },
     },
+    beginningOfTheWeek: {
+      options: ['sunday', 'monday'],
+      control: { type: 'radio' },
+    },
     $holidayColor: { control: 'color' },
     $textColor: { control: 'color' },
   },
@@ -59,9 +63,10 @@ type Story = StoryObj<typeof DayPicker>;
 export const Default: Story = {
   args: {
     defaultValue: new Date(),
-    minDate: new Date(2023, 4, 24),
+    minDate: new Date(2023, 5, 2),
     maxDate: new Date(2023, 7, 23),
     variant: 'month',
+    beginningOfTheWeek: 'sunday',
     holidays,
   },
 

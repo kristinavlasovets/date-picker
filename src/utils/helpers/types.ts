@@ -1,7 +1,7 @@
 export interface GetDayVariantProps {
   day: number;
-  minDate?: Date;
-  maxDate?: Date;
+  minDate: Date;
+  maxDate: Date;
   startDate?: Date;
   endDate?: Date;
   currentYear: number;

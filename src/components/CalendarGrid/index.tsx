@@ -1,11 +1,11 @@
 import React, { FC, useState } from 'react';
 
 import { monthNames } from '@/constants';
+import { CalendarDecorator } from '@/utils/decorators/CalendarDecorator';
 import {
   getDayVariant,
   getNumberOfDaysInMonth,
   getRange,
-  getTimeFromState,
 } from '@/utils/helpers/CalendarHelpers';
 import { handleDisabledDays } from '@/utils/helpers/handleDisabledDays';
 
@@ -26,22 +26,23 @@ const CalendarGrid: FC<CalendarGridProps> = ({
   holidays,
   withRange,
   $holidayColor,
+  beginningOfTheWeek,
   showWeekend,
-  isByMonth,
-  onHandlerSelectDate,
+  isByYear,
   isDateByInput,
+  onHandlerSelectDate,
 }) => {
-  const [byMonth, setByMonth] = useState<boolean | undefined>(isByMonth);
+  const [byYear, setByYear] = useState<boolean | undefined>(isByYear);
 
   const onHandlerSelectMonth = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    setByMonth(false);
+    setByYear(false);
   };
 
   return (
     <SevenColGrid>
-      {byMonth &&
+      {byYear &&
         monthNames.map((month) => (
           <Day
             onClick={onHandlerSelectMonth}
@@ -52,42 +53,46 @@ const CalendarGrid: FC<CalendarGridProps> = ({
           />
         ))}
 
-      {!byMonth &&
-        getRange(1, getNumberOfDaysInMonth(currentYear, currentMonth) + 1).map(
-          (day) => (
-            <Day
-              onClick={onHandlerSelectDate}
-              currentday={day}
-              key={day}
-              $holidayColor={$holidayColor}
-              $showWeekend={showWeekend}
-              variant={getDayVariant({
-                minDate,
-                maxDate,
-                startDate,
-                endDate,
-                day,
-                currentYear,
-                currentMonth,
-                selectedDate,
-                defaultValue,
-                holidays,
-                withRange,
-                isDateByInput,
-              })}
-              day={day}
-              disabled={handleDisabledDays({
-                minDate,
-                maxDate,
-                day,
-                currentMonth,
-                currentYear,
-              })}
-            />
-          )
-        )}
+      {!byYear &&
+        getRange(
+          1,
+          getNumberOfDaysInMonth(currentYear, currentMonth) + 1,
+          currentMonth,
+          currentYear,
+          beginningOfTheWeek
+        ).map((day, index) => (
+          <Day
+            onClick={onHandlerSelectDate}
+            currentday={day}
+            key={index}
+            $holidayColor={$holidayColor}
+            $showWeekend={showWeekend}
+            variant={getDayVariant({
+              minDate,
+              maxDate,
+              startDate,
+              endDate,
+              day,
+              currentYear,
+              currentMonth,
+              selectedDate,
+              defaultValue,
+              holidays,
+              withRange,
+              isDateByInput,
+            })}
+            day={day}
+            disabled={handleDisabledDays({
+              minDate,
+              maxDate,
+              day,
+              currentMonth,
+              currentYear,
+            })}
+          />
+        ))}
     </SevenColGrid>
   );
 };
 
-export default CalendarGrid;
+export default CalendarDecorator(CalendarGrid);

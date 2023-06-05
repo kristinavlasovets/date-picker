@@ -1,17 +1,24 @@
 import { dayNames } from '@/constants';
 
+import { handleDisabledDays } from './handleDisabledDays';
 import { GetDayVariantProps } from './types';
+
+const lastIndexOfTheWeek = 6;
 
 export const getNumberOfDaysInMonth = (year: number, month: number) =>
   new Date(year, month + 1, 0).getDate();
 
-export const getSortedDays = (year: number, month: number) => {
-  const dayIndex = new Date(year, month, 1).getDay();
-  const firstHalf = dayNames.slice(dayIndex);
-  return [...firstHalf, ...dayNames.slice(0, dayIndex)];
+export const getSortedDays = (beginningOfTheWeek: string) => {
+  if (beginningOfTheWeek === 'monday') {
+    const sortedDayNames = dayNames
+      .slice(1, dayNames.length)
+      .concat(dayNames[0]);
+    return sortedDayNames;
+  }
+  return dayNames;
 };
 
-export const getRange = (start: number, end: number) => {
+export const getMonthTotalDays = (start: number, end: number) => {
   const length = Math.abs(end - start);
 
   const { result } = Array.from({ length }).reduce(
@@ -21,6 +28,48 @@ export const getRange = (start: number, end: number) => {
     }),
     { result: [], current: start }
   );
+
+  return result;
+};
+
+export const getRange = (
+  start: number,
+  end: number,
+  currentMonth: number,
+  currentYear: number,
+  beginningOfTheWeek: string
+) => {
+  const result = getMonthTotalDays(start, end);
+
+  const newResult = result.map((item) =>
+    beginningOfTheWeek === 'monday'
+      ? new Date(currentYear, currentMonth, item).getDay() - 1
+      : new Date(currentYear, currentMonth, item).getDay()
+  );
+
+  const prevMonthDays =
+    getNumberOfDaysInMonth(currentYear, currentMonth - 1) + 1;
+  const prevMonthRange = getMonthTotalDays(1, prevMonthDays);
+
+  const nextMonthDays =
+    getNumberOfDaysInMonth(currentYear, currentMonth + 1) - 1;
+  const nextMonthRange = getMonthTotalDays(1, nextMonthDays);
+
+  if (newResult[0] !== 0) {
+    const firstElement = newResult[0];
+    const lastElement = newResult[newResult.length - 1];
+
+    const prevMonthVisibleDays = prevMonthRange
+      .slice(prevMonthRange.length - firstElement)
+      .map((item) => `-${item.toString()}-`);
+    const nextMonthVisibleDays = nextMonthRange
+      .slice(0, lastIndexOfTheWeek - lastElement)
+      .map((item) => `-${item.toString()}-`);
+    const preRangedResult = prevMonthVisibleDays.concat(result);
+    const rangedResult = preRangedResult.concat(nextMonthVisibleDays);
+
+    return rangedResult;
+  }
 
   return result;
 };
@@ -53,15 +102,6 @@ export const getDayVariant = (options: GetDayVariantProps) => {
       .includes(new Date(currentYear, currentMonth, day).getTime())
   ) {
     return 'holiday';
-  }
-
-  if (
-    (minDate &&
-      minDate?.getTime() > getTimeFromState(day, currentYear, currentMonth)) ||
-    (maxDate &&
-      maxDate?.getTime() < getTimeFromState(day, currentYear, currentMonth))
-  ) {
-    return 'disabled';
   }
 
   if (
@@ -154,23 +194,20 @@ export const getDayVariant = (options: GetDayVariantProps) => {
 
   if (
     new Date(currentYear, currentMonth, day).getDay() === 0 ||
-    new Date(currentYear, currentMonth, day).getDay() === 6
+    new Date(currentYear, currentMonth, day).getDay() === lastIndexOfTheWeek
   ) {
     return 'weekend';
   }
 
   if (
     new Date(currentYear, currentMonth, day).getDay() === 0 ||
-    new Date(currentYear, currentMonth, day).getDay() === 6
+    new Date(currentYear, currentMonth, day).getDay() === lastIndexOfTheWeek
   ) {
     return 'holiday';
   }
 
   if (
-    (minDate &&
-      minDate?.getTime() > getTimeFromState(day, currentYear, currentMonth)) ||
-    (maxDate &&
-      maxDate?.getTime() < getTimeFromState(day, currentYear, currentMonth))
+    handleDisabledDays({ minDate, maxDate, day, currentMonth, currentYear })
   ) {
     return 'disabled';
   }

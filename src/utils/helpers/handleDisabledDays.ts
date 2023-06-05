@@ -13,6 +13,7 @@ export const handleDisabledDays = (options: HandleDisabledDaysProps) => {
 
   return (
     minDate.getTime() > getTimeFromState(day, currentYear, currentMonth) ||
-    maxDate.getTime() < getTimeFromState(day, currentYear, currentMonth)
+    maxDate.getTime() < getTimeFromState(day, currentYear, currentMonth) ||
+    typeof day === 'string'
   );
 };

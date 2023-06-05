@@ -2,7 +2,7 @@ import React, { FC, useCallback, useEffect, useState } from 'react';
 
 import MyNextSvg from '@/assets/icons/next.svg';
 import MyPrevSvg from '@/assets/icons/prev.svg';
-import { CalendarText, monthNames, years } from '@/constants';
+import { CalendarText, dayNames, monthNames, years } from '@/constants';
 import {
   getNumberOfDaysInMonth,
   getSortedDays,
@@ -12,8 +12,6 @@ import { getDateInRange } from '@/utils/helpers/DateSelectorHelpers';
 
 import Button from '../Button';
 import CalendarGrid from '../CalendarGrid';
-import CalendarGridByMonth from '../CalendarGridByMonth';
-import CalendarGridByWeek from '../CalendarGridByWeek';
 import ErrorBoundary from '../ErrorBoundary';
 import TodoList from '../TodoList';
 
@@ -43,6 +41,7 @@ const Calendar: FC<CalendarProps> = ({
   defaultValue,
   value,
   variant,
+  beginningOfTheWeek,
   holidays,
   $holidayColor,
   $textColor,
@@ -248,69 +247,32 @@ const Calendar: FC<CalendarProps> = ({
         <Main>
           {variant !== 'year' && (
             <SevenColGrid>
-              {getSortedDays(currentYear, currentMonth).map((weekday) => (
+              {getSortedDays(beginningOfTheWeek).map((weekday) => (
                 <Weekday $textColor={$textColor} key={weekday}>
                   {weekday}
                 </Weekday>
               ))}
             </SevenColGrid>
           )}
-          {variant === 'month' && (
-            <CalendarGrid
-              currentYear={currentYear}
-              currentMonth={currentMonth}
-              minDate={minDate}
-              maxDate={maxDate}
-              startDate={startDate}
-              endDate={endDate}
-              selectedDate={selectedDate}
-              defaultValue={defaultValue}
-              holidays={holidays}
-              withRange={withRange}
-              $holidayColor={$holidayColor}
-              showWeekend={showWeekend}
-              isDateByInput={isDateByInput}
-              onHandlerSelectDate={onHandlerSelectDate}
-            />
-          )}
-          {variant === 'week' && (
-            <CalendarGridByWeek
-              currentYear={currentYear}
-              currentMonth={currentMonth}
-              minDate={minDate}
-              maxDate={maxDate}
-              startDate={startDate}
-              endDate={endDate}
-              selectedDate={selectedDate}
-              defaultValue={defaultValue}
-              holidays={holidays}
-              withRange={withRange}
-              $holidayColor={$holidayColor}
-              showWeekend={showWeekend}
-              isByWeek={true}
-              isDateByInput={isDateByInput}
-              onHandlerSelectDate={onHandlerSelectDate}
-            />
-          )}
-          {variant === 'year' && (
-            <CalendarGridByMonth
-              currentYear={currentYear}
-              currentMonth={currentMonth}
-              minDate={minDate}
-              maxDate={maxDate}
-              startDate={startDate}
-              endDate={endDate}
-              selectedDate={selectedDate}
-              defaultValue={defaultValue}
-              holidays={holidays}
-              withRange={withRange}
-              $holidayColor={$holidayColor}
-              showWeekend={showWeekend}
-              isByMonth={true}
-              isDateByInput={isDateByInput}
-              onHandlerSelectDate={onHandlerSelectDate}
-            />
-          )}
+          <CalendarGrid
+            currentYear={currentYear}
+            currentMonth={currentMonth}
+            minDate={minDate}
+            maxDate={maxDate}
+            startDate={startDate}
+            endDate={endDate}
+            selectedDate={selectedDate}
+            defaultValue={defaultValue}
+            holidays={holidays}
+            withRange={withRange}
+            $holidayColor={$holidayColor}
+            showWeekend={showWeekend}
+            isDateByInput={isDateByInput}
+            isByWeek={variant === 'week'}
+            isByYear={variant === 'year'}
+            beginningOfTheWeek={beginningOfTheWeek}
+            onHandlerSelectDate={onHandlerSelectDate}
+          />
         </Main>
         {variant !== 'year' && isTodoList && !withoutTodo && (
           <TodoList

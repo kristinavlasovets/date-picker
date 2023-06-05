@@ -8,12 +8,15 @@ import ErrorBoundary from '../ErrorBoundary';
 import { Wrapper } from './styles';
 import { RangePickerProps } from './types';
 
+const { titleFrom, titleTo } = DayPickerText;
+
 const RangePicker: FC<RangePickerProps> = ({
   defaultStartDate,
   defaultEndDate,
   minDate,
   maxDate,
   variant,
+  beginningOfTheWeek,
   $holidayColor,
   $textColor,
   holidays,
@@ -37,7 +40,6 @@ const RangePicker: FC<RangePickerProps> = ({
     setIsClearButton(action);
   };
 
-  const { titleFrom, titleTo } = DayPickerText;
   return (
     <ErrorBoundary>
       <Wrapper>
@@ -49,14 +51,15 @@ const RangePicker: FC<RangePickerProps> = ({
           startDate={startDate}
           endDate={endDate}
           variant={variant}
-          onHandlerRangeDate={onHandlerStartDate}
           holidays={holidays}
           $holidayColor={$holidayColor}
           $textColor={$textColor}
           isClearButton={isClearButton}
-          onHandlerShowButton={onHandlerShowButton}
           withoutTodo={withoutTodo}
           withRange={withRange}
+          beginningOfTheWeek={beginningOfTheWeek}
+          onHandlerRangeDate={onHandlerStartDate}
+          onHandlerShowButton={onHandlerShowButton}
         />
         <DayPicker
           title={titleTo}
@@ -66,14 +69,15 @@ const RangePicker: FC<RangePickerProps> = ({
           startDate={startDate}
           endDate={endDate}
           variant={variant}
-          onHandlerRangeDate={onHandlerEndDate}
           holidays={holidays}
           $holidayColor={$holidayColor}
           $textColor={$textColor}
           isClearButton={isClearButton}
-          onHandlerShowButton={onHandlerShowButton}
           withoutTodo={withoutTodo}
           withRange={withRange}
+          beginningOfTheWeek={beginningOfTheWeek}
+          onHandlerRangeDate={onHandlerEndDate}
+          onHandlerShowButton={onHandlerShowButton}
         />
       </Wrapper>
     </ErrorBoundary>

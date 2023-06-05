@@ -3,6 +3,7 @@ export interface DayPickerProps {
   minDate: Date;
   maxDate: Date;
   variant: 'day' | 'week' | 'month';
+  beginningOfTheWeek: 'sunday' | 'monday';
   holidays: { month: number; day: number }[];
   $holidayColor: string;
   $textColor: string;

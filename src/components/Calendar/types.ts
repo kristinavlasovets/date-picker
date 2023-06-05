@@ -1,6 +1,7 @@
 export interface CalendarProps {
   value: Date;
   variant: string;
+  beginningOfTheWeek: string;
   minDate: Date;
   maxDate: Date;
   defaultValue: Date;
