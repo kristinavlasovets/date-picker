@@ -15,6 +15,10 @@ import {
 import { handleDisabledDays } from '../helpers/handleDisabledDays';
 
 const daysInWeek = 7;
+const oneDay = 1;
+const oneWeek = 1;
+const firstDayIndex = 0;
+const zeroDays = 0;
 
 export const CalendarDecorator = (WrappedComponent: React.ElementType) =>
   function (props: CalendarGridProps) {
@@ -44,8 +48,8 @@ export const CalendarDecorator = (WrappedComponent: React.ElementType) =>
       const totalDays = useMemo(
         () =>
           getRange(
-            1,
-            getNumberOfDaysInMonth(currentYear, currentMonth) + 1,
+            oneDay,
+            getNumberOfDaysInMonth(currentYear, currentMonth) + oneDay,
             currentMonth,
             currentYear,
             beginningOfTheWeek
@@ -68,28 +72,30 @@ export const CalendarDecorator = (WrappedComponent: React.ElementType) =>
       }, [currentWeek]);
 
       const onHandlerNextWeek = () => {
-        if (days[days.length - 1] !== totalDays[totalDays.length - 1]) {
-          setCurrentWeek((prev) => prev + 1);
+        if (
+          days[days.length - oneDay] !== totalDays[totalDays.length - oneDay]
+        ) {
+          setCurrentWeek((prev) => prev + oneDay);
         }
       };
 
       const onHandlerPrevWeek = () => {
-        if (days[0] !== totalDays[0]) {
-          setCurrentWeek((prev) => prev - 1);
+        if (days[firstDayIndex] !== totalDays[firstDayIndex]) {
+          setCurrentWeek((prev) => prev - oneDay);
         }
       };
 
       return (
         <>
           <SevenColGrid>
-            {days.length > 0 &&
+            {days.length > zeroDays &&
               days.map((day) => (
                 <Day
                   onClick={onHandlerSelectDate}
                   currentday={day}
                   key={day}
                   holidaycolor={holidaycolor}
-                  $showWeekend={showWeekend}
+                  showweekend={showWeekend}
                   variant={getDayVariant({
                     minDate,
                     maxDate,
@@ -117,11 +123,11 @@ export const CalendarDecorator = (WrappedComponent: React.ElementType) =>
           </SevenColGrid>
           <WeekSwitcher>
             <IconWrapper onClick={onHandlerPrevWeek}>
-              <Icon src={MyPrevSvg} alt="prev" />
+              <Icon src={MyPrevSvg} alt="prev" aria-label="prevWeek" />
             </IconWrapper>
-            {`${currentWeek + 1} / ${currentMonthWeeks}`}
+            {`${currentWeek + oneWeek} / ${currentMonthWeeks}`}
             <IconWrapper onClick={onHandlerNextWeek}>
-              <Icon src={MyNextSvg} alt="next" />
+              <Icon src={MyNextSvg} alt="next" aria-label="nextWeek" />
             </IconWrapper>
           </WeekSwitcher>
         </>

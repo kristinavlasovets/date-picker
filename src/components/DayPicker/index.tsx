@@ -27,10 +27,12 @@ const DayPicker: FC<DayPickerProps> = ({
   isClearButton,
   withoutTodo,
   withRange,
+  isRangePickerPopup,
   startDate,
   endDate,
   onHandlerShowButton,
   onHandlerRangeDate,
+  onHandlerShowCalendar,
 }) => {
   const [value, setValue] = useState<Date>(defaultValue);
   const [isPopup, setIsPopup] = useState<boolean>(false);
@@ -40,6 +42,7 @@ const DayPicker: FC<DayPickerProps> = ({
   const onHandlerSelectDate = (date: Date) => {
     setValue(date);
     setIsPopup(true);
+    onHandlerShowCalendar(true);
   };
 
   const onHandlerShowPopUp = () => {
@@ -49,11 +52,6 @@ const DayPicker: FC<DayPickerProps> = ({
   const onHandlerShowTodoList = (action: boolean) => {
     setIsTodoList(action);
   };
-
-  const onHandlerShowCalendar = () => {
-    setIsPopup(true);
-  };
-
   const onHandlerSetDayByInput = (action: boolean) => {
     setIsDateByInput(action);
   };
@@ -70,8 +68,9 @@ const DayPicker: FC<DayPickerProps> = ({
             onHandlerSelectDate={onHandlerSelectDate}
             onHandlerShowPopUp={onHandlerShowPopUp}
             onHandlerSetDayByInput={onHandlerSetDayByInput}
+            onHandlerShowCalendar={onHandlerShowCalendar}
           />
-          {isPopup && (
+          {(isPopup || isRangePickerPopup) && (
             <Calendar
               value={value}
               variant={variant}

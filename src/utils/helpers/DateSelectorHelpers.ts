@@ -6,13 +6,20 @@ export const getValidatedDate = (inputValue: string): boolean => {
     return false;
   }
 
+  const totalMonths = 12;
+  const firstMonth = 1;
+  const firstDay = 1;
+
   const [day, month, year] = inputValue.split('/').map((item) => Number(item));
 
-  if (month < 1 || month > 12) {
+  if (month < firstMonth || month > totalMonths) {
     return false;
   }
 
-  if (day < 1 || day > getNumberOfDaysInMonth(year, month - 1)) {
+  if (
+    day < firstDay ||
+    day > getNumberOfDaysInMonth(year, month - firstMonth)
+  ) {
     return false;
   }
   return true;

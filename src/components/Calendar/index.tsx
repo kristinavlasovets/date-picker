@@ -69,6 +69,9 @@ const Calendar: FC<CalendarProps> = ({
   });
   const [showWeekend, setShowWeekend] = useState<boolean>(true);
 
+  const oneMonth = 1;
+  const firstMonth = 0;
+  const lastMonth = 11;
   useEffect(() => {
     defaultValue && setCurrentMonth(defaultValue.getMonth());
     defaultValue && setCurrentYear(defaultValue.getFullYear());
@@ -82,25 +85,29 @@ const Calendar: FC<CalendarProps> = ({
   }, [value]);
 
   const onHandlerPrevMonth = () => {
-    if (currentMonth > 0) {
-      setCurrentMonth((prev) => prev - 1);
+    if (currentMonth > firstMonth) {
+      setCurrentMonth((prev) => prev - oneMonth);
     } else {
-      setCurrentMonth(11);
-      setCurrentYear((prev) => prev - 1);
+      setCurrentMonth(lastMonth);
+      setCurrentYear((prev) => prev - oneMonth);
     }
   };
 
   const onHandlerNextMonth = () => {
-    if (currentMonth < 11) {
-      setCurrentMonth((prev) => prev + 1);
+    if (currentMonth < lastMonth) {
+      setCurrentMonth((prev) => prev + oneMonth);
     } else {
-      setCurrentMonth(0);
-      setCurrentYear((prev) => prev + 1);
+      setCurrentMonth(firstMonth);
+      setCurrentYear((prev) => prev + oneMonth);
     }
   };
 
   const onHandlerSelectDate = useCallback(
     (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      if (e.currentTarget.getAttribute('variant') === 'disabled') {
+        return;
+      }
+
       setSelectedDate(
         new Date(
           currentYear,
@@ -108,6 +115,7 @@ const Calendar: FC<CalendarProps> = ({
           Number(e.currentTarget.getAttribute('currentday'))
         )
       );
+
       onHandlerRangeDate(
         new Date(
           currentYear,
@@ -116,7 +124,7 @@ const Calendar: FC<CalendarProps> = ({
         )
       );
       onHandlerSetDayByInput(false);
-      onHandlerShowCalendar();
+      onHandlerShowCalendar(true);
     },
     [currentYear, currentMonth, onHandlerSetDayByInput, onHandlerShowCalendar]
   );
@@ -188,6 +196,7 @@ const Calendar: FC<CalendarProps> = ({
               <Month
                 textcolor={textcolor}
                 onClick={onHandlerCalendarPopup('isMonthOpen')}
+                aria-label="monthToggle"
               >
                 {monthNames[currentMonth]}
               </Month>
@@ -224,6 +233,7 @@ const Calendar: FC<CalendarProps> = ({
               <Year
                 textcolor={textcolor}
                 onClick={onHandlerCalendarPopup('isYearOpen')}
+                aria-label="yearToggle"
               >
                 {currentYear}
               </Year>

@@ -33,9 +33,13 @@ const DateSelector: FC<DateSelectorProps> = ({
   onHandlerSelectDate,
   onHandlerShowPopUp,
   onHandlerSetDayByInput,
+  onHandlerShowCalendar,
 }) => {
   const [inputValue, setInputValue] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
+
+  const oneMonth = 1;
+  const maxLengthOfInput = 10;
 
   const onHandlerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const currentInputValue = e.target.value;
@@ -51,7 +55,7 @@ const DateSelector: FC<DateSelectorProps> = ({
       .split('/')
       .map((item) => Number(item));
 
-    const selectedDate = new Date(year, month - 1, day);
+    const selectedDate = new Date(year, month - oneMonth, day);
 
     if (!getDateInRange(selectedDate, minDate, maxDate)) {
       setErrorMessage(rangeError);
@@ -64,6 +68,7 @@ const DateSelector: FC<DateSelectorProps> = ({
 
   const onHandlerTogglePopUp = () => {
     onHandlerShowPopUp();
+    onHandlerShowCalendar(false);
   };
 
   const onHandlerClearInput = () => {
@@ -80,6 +85,7 @@ const DateSelector: FC<DateSelectorProps> = ({
             alt={calendarAlt}
             onClick={onHandlerTogglePopUp}
             aria-label={calendarAlt}
+            data-cy="click"
           />
         </IconWrapper>
         <Input
@@ -87,7 +93,7 @@ const DateSelector: FC<DateSelectorProps> = ({
           value={inputValue}
           onChange={onHandlerChange}
           placeholder={placeholder}
-          maxLength={10}
+          maxLength={maxLengthOfInput}
         />
         <IconWrapper>
           <Icon

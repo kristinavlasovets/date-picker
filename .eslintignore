@@ -3,5 +3,4 @@ lib/
 e2e/
 support/
 rollup.config.js
-cypress.config.ts
 fileTransformer.js

@@ -34,6 +34,10 @@ const CalendarGrid: FC<CalendarGridProps> = ({
 }) => {
   const [byYear, setByYear] = useState<boolean | undefined>(isByYear);
 
+  const oneDay = 1;
+  const firstIndexOfMonth = 0;
+  const fourthIndexOfMonth = 3;
+
   const onHandlerSelectMonth = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
@@ -47,16 +51,16 @@ const CalendarGrid: FC<CalendarGridProps> = ({
           <Day
             onClick={onHandlerSelectMonth}
             key={month}
-            day={month.slice(0, 3)}
+            day={month.slice(firstIndexOfMonth, fourthIndexOfMonth)}
             variant="default"
-            $showWeekend={false}
+            showweekend={false}
           />
         ))}
 
       {!byYear &&
         getRange(
-          1,
-          getNumberOfDaysInMonth(currentYear, currentMonth) + 1,
+          oneDay,
+          getNumberOfDaysInMonth(currentYear, currentMonth) + oneDay,
           currentMonth,
           currentYear,
           beginningOfTheWeek
@@ -66,7 +70,7 @@ const CalendarGrid: FC<CalendarGridProps> = ({
             currentday={day}
             key={index}
             holidaycolor={holidaycolor}
-            $showWeekend={showWeekend}
+            showweekend={showWeekend}
             variant={getDayVariant({
               minDate,
               maxDate,

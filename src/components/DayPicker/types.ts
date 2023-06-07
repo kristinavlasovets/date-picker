@@ -11,9 +11,11 @@ export interface DayPickerProps {
   isClearButton: boolean;
   withoutTodo: boolean;
   withRange: boolean;
+  isRangePickerPopup: boolean;
   startDate?: Date;
   endDate?: Date;
 
   onHandlerShowButton: (action: boolean) => void;
   onHandlerRangeDate: (value: Date) => void;
+  onHandlerShowCalendar: (action: boolean) => void;
 }

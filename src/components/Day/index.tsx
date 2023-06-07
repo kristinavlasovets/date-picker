@@ -13,14 +13,14 @@ const Day: FC<DayProps> = ({
   onClick,
   currentday,
   day = 0,
-  $showWeekend,
+  showweekend,
 }) => (
   <DayItem
     variant={variant}
     holidaycolor={holidaycolor}
     onClick={onClick}
     currentday={currentday}
-    $showWeekend={$showWeekend}
+    showweekend={showweekend}
     aria-label={dayLabel}
   >
     {day}

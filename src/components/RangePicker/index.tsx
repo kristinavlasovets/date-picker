@@ -27,6 +27,7 @@ const RangePicker: FC<RangePickerProps> = ({
   const [startDate, setStartDate] = useState<Date>(defaultStartDate);
   const [endDate, setEndDate] = useState<Date>(defaultEndDate);
   const [isClearButton, setIsClearButton] = useState<boolean>(false);
+  const [isRangePickerPopup, setIsRangePickerPopup] = useState<boolean>(false);
 
   const withoutTodo = true;
   const withRange = true;
@@ -41,6 +42,9 @@ const RangePicker: FC<RangePickerProps> = ({
 
   const onHandlerShowButton = (action: boolean) => {
     setIsClearButton(action);
+  };
+  const onHandlerShowCalendar = (action: boolean) => {
+    setIsRangePickerPopup(action);
   };
 
   return (
@@ -62,9 +66,11 @@ const RangePicker: FC<RangePickerProps> = ({
             isClearButton={isClearButton}
             withoutTodo={withoutTodo}
             withRange={withRange}
+            isRangePickerPopup={isRangePickerPopup}
             beginningOfTheWeek={beginningOfTheWeek}
             onHandlerRangeDate={onHandlerStartDate}
             onHandlerShowButton={onHandlerShowButton}
+            onHandlerShowCalendar={onHandlerShowCalendar}
           />
           <DayPicker
             title={titleTo}
@@ -80,9 +86,11 @@ const RangePicker: FC<RangePickerProps> = ({
             isClearButton={isClearButton}
             withoutTodo={withoutTodo}
             withRange={withRange}
+            isRangePickerPopup={isRangePickerPopup}
             beginningOfTheWeek={beginningOfTheWeek}
             onHandlerRangeDate={onHandlerEndDate}
             onHandlerShowButton={onHandlerShowButton}
+            onHandlerShowCalendar={onHandlerShowCalendar}
           />
         </Wrapper>
       </ErrorBoundary>

@@ -5,4 +5,5 @@ export interface DateSelectorProps {
   onHandlerSelectDate: (date: Date) => void;
   onHandlerShowPopUp: () => void;
   onHandlerSetDayByInput: (action: boolean) => void;
+  onHandlerShowCalendar: (action: boolean) => void;
 }

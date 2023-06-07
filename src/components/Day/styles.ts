@@ -21,8 +21,8 @@ export const DayItem = styled.button<DayProps>`
       ? holidaycolor
       : DayItemVariants[variant].background};
   border-radius: ${({ variant }) => DayItemVariants[variant].borderRadius};
-  color: ${({ variant, $showWeekend }) =>
-    variant === 'weekend' && !$showWeekend
+  color: ${({ variant, showweekend }) =>
+    variant === 'weekend' && !showweekend
       ? DayItemVariants.default.color
       : DayItemVariants[variant].color};
 `;

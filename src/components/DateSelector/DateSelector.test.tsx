@@ -16,6 +16,7 @@ describe('rendering DateSelector', () => {
           onHandlerSelectDate={() => ({})}
           onHandlerShowPopUp={() => ({})}
           onHandlerSetDayByInput={() => ({})}
+          onHandlerShowCalendar={() => ({})}
         />
       </ThemeProvider>
     );
@@ -34,6 +35,7 @@ describe('rendering DateSelector', () => {
           onHandlerSelectDate={() => ({})}
           onHandlerShowPopUp={mockOnHandlerShowPopUp}
           onHandlerSetDayByInput={() => ({})}
+          onHandlerShowCalendar={() => ({})}
         />
       </ThemeProvider>
     );
@@ -52,6 +54,7 @@ describe('rendering DateSelector', () => {
           onHandlerSelectDate={() => ({})}
           onHandlerShowPopUp={() => ({})}
           onHandlerSetDayByInput={() => ({})}
+          onHandlerShowCalendar={() => ({})}
         />
       </ThemeProvider>
     );
@@ -71,6 +74,7 @@ describe('rendering DateSelector', () => {
           onHandlerSelectDate={() => ({})}
           onHandlerShowPopUp={() => ({})}
           onHandlerSetDayByInput={() => ({})}
+          onHandlerShowCalendar={() => ({})}
         />
       </ThemeProvider>
     );
@@ -91,6 +95,7 @@ describe('rendering DateSelector', () => {
           onHandlerSelectDate={() => ({})}
           onHandlerShowPopUp={() => ({})}
           onHandlerSetDayByInput={() => ({})}
+          onHandlerShowCalendar={() => ({})}
         />
       </ThemeProvider>
     );

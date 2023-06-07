@@ -20,7 +20,7 @@ export interface CalendarProps {
 
   onHandlerShowButton: (action: boolean) => void;
   onHandlerShowTodoList: (action: boolean) => void;
-  onHandlerShowCalendar: () => void;
+  onHandlerShowCalendar: (action: boolean) => void;
   onHandlerRangeDate: (value: Date) => void;
   onHandlerSetDayByInput: (action: boolean) => void;
 }

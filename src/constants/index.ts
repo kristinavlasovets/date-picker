@@ -111,9 +111,9 @@ export const DayItemVariants = {
     color: Colors.WHITE,
   },
   'range-in-between': {
-    background: Colors.LIGHT_BLUE,
+    background: Colors.PURPLE,
     borderRadius: 0,
-    color: Colors.DARK_BLUE,
+    color: Colors.DARK_GRAY,
   },
   'range-end': {
     background: Colors.DARK_BLUE,
