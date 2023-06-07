@@ -101,7 +101,12 @@ const TodoList: FC<TodoListProps> = ({
         <Title>{selectedDate && selectedDate.toLocaleDateString()}</Title>
         <Title>{`${todos.length} ${title}`}</Title>
         <CloseIconWrapper>
-          <Icon src={MyCloseSvg} alt={closeAlt} onClick={onHandlerClose} />
+          <Icon
+            src={MyCloseSvg}
+            alt={closeAlt}
+            onClick={onHandlerClose}
+            aria-label={closeAlt}
+          />
         </CloseIconWrapper>
       </HeaderWrapper>
       <HeaderWrapper>
@@ -112,10 +117,20 @@ const TodoList: FC<TodoListProps> = ({
           placeholder={placeholder}
         />
         <IconWrapper>
-          <Icon src={MyClearSvg} alt={clearAlt} onClick={onHandlerClearInput} />
+          <Icon
+            src={MyClearSvg}
+            alt={clearAlt}
+            onClick={onHandlerClearInput}
+            aria-label={clearAlt}
+          />
         </IconWrapper>
         <IconWrapper>
-          <Icon src={MyAddSvg} alt={addAlt} onClick={onHandlerAddTodo} />
+          <Icon
+            src={MyAddSvg}
+            alt={addAlt}
+            onClick={onHandlerAddTodo}
+            aria-label={addAlt}
+          />
         </IconWrapper>
       </HeaderWrapper>
       {todos &&

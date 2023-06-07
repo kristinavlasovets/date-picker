@@ -9,7 +9,7 @@ export interface DayProps {
     | 'range-end'
     | 'holiday'
     | 'weekend';
-  $holidayColor?: string;
+  holidaycolor?: string;
   currentday?: number;
   day?: number | string;
   disabled?: boolean;

@@ -1,6 +1,9 @@
 import React, { FC, useState } from 'react';
+import { ThemeProvider } from 'styled-components';
 
 import { DayPickerText } from '@/constants';
+import { GlobalStyles } from '@/styles/globalStyles';
+import { commonTheme } from '@/styles/theme';
 
 import Calendar from '../Calendar';
 import DateSelector from '../DateSelector';
@@ -18,8 +21,8 @@ const DayPicker: FC<DayPickerProps> = ({
   variant,
   beginningOfTheWeek,
   holidays,
-  $holidayColor,
-  $textColor,
+  holidaycolor,
+  textcolor,
   title,
   isClearButton,
   withoutTodo,
@@ -56,43 +59,46 @@ const DayPicker: FC<DayPickerProps> = ({
   };
 
   return (
-    <ErrorBoundary>
-      <Wrapper>
-        <Title>{title || titleDefault}</Title>
-        <DateSelector
-          minDate={minDate}
-          maxDate={maxDate}
-          onHandlerSelectDate={onHandlerSelectDate}
-          onHandlerShowPopUp={onHandlerShowPopUp}
-          onHandlerSetDayByInput={onHandlerSetDayByInput}
-        />
-        {isPopup && (
-          <Calendar
-            value={value}
-            variant={variant}
-            beginningOfTheWeek={beginningOfTheWeek}
+    <ThemeProvider theme={commonTheme}>
+      <GlobalStyles theme={commonTheme} />
+      <ErrorBoundary>
+        <Wrapper>
+          <Title>{title || titleDefault}</Title>
+          <DateSelector
             minDate={minDate}
             maxDate={maxDate}
-            startDate={startDate}
-            endDate={endDate}
-            defaultValue={defaultValue}
-            holidays={holidays}
-            $textColor={$textColor}
-            $holidayColor={$holidayColor}
-            isClearButton={isClearButton}
-            isTodoList={isTodoList}
-            withoutTodo={withoutTodo}
-            withRange={withRange}
-            isDateByInput={isDateByInput}
-            onHandlerShowButton={onHandlerShowButton}
-            onHandlerShowTodoList={onHandlerShowTodoList}
-            onHandlerRangeDate={onHandlerRangeDate}
-            onHandlerShowCalendar={onHandlerShowCalendar}
+            onHandlerSelectDate={onHandlerSelectDate}
+            onHandlerShowPopUp={onHandlerShowPopUp}
             onHandlerSetDayByInput={onHandlerSetDayByInput}
           />
-        )}
-      </Wrapper>
-    </ErrorBoundary>
+          {isPopup && (
+            <Calendar
+              value={value}
+              variant={variant}
+              beginningOfTheWeek={beginningOfTheWeek}
+              minDate={minDate}
+              maxDate={maxDate}
+              startDate={startDate}
+              endDate={endDate}
+              defaultValue={defaultValue}
+              holidays={holidays}
+              textcolor={textcolor}
+              holidaycolor={holidaycolor}
+              isClearButton={isClearButton}
+              isTodoList={isTodoList}
+              withoutTodo={withoutTodo}
+              withRange={withRange}
+              isDateByInput={isDateByInput}
+              onHandlerShowButton={onHandlerShowButton}
+              onHandlerShowTodoList={onHandlerShowTodoList}
+              onHandlerRangeDate={onHandlerRangeDate}
+              onHandlerShowCalendar={onHandlerShowCalendar}
+              onHandlerSetDayByInput={onHandlerSetDayByInput}
+            />
+          )}
+        </Wrapper>
+      </ErrorBoundary>
+    </ThemeProvider>
   );
 };
 

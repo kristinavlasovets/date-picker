@@ -1,11 +1,15 @@
 import React, { FC } from 'react';
 
+import { DayText } from '@/constants';
+
 import { DayItem } from './styles';
 import { DayProps } from './types';
 
+const { dayLabel } = DayText;
+
 const Day: FC<DayProps> = ({
   variant = 'default',
-  $holidayColor,
+  holidaycolor,
   onClick,
   currentday,
   day = 0,
@@ -13,10 +17,11 @@ const Day: FC<DayProps> = ({
 }) => (
   <DayItem
     variant={variant}
-    $holidayColor={$holidayColor}
+    holidaycolor={holidaycolor}
     onClick={onClick}
     currentday={currentday}
     $showWeekend={$showWeekend}
+    aria-label={dayLabel}
   >
     {day}
   </DayItem>

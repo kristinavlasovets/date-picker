@@ -25,7 +25,7 @@ const CalendarGrid: FC<CalendarGridProps> = ({
   defaultValue,
   holidays,
   withRange,
-  $holidayColor,
+  holidaycolor,
   beginningOfTheWeek,
   showWeekend,
   isByYear,
@@ -65,7 +65,7 @@ const CalendarGrid: FC<CalendarGridProps> = ({
             onClick={onHandlerSelectDate}
             currentday={day}
             key={index}
-            $holidayColor={$holidayColor}
+            holidaycolor={holidaycolor}
             $showWeekend={showWeekend}
             variant={getDayVariant({
               minDate,

@@ -2,7 +2,7 @@ import React, { FC, useCallback, useEffect, useState } from 'react';
 
 import MyNextSvg from '@/assets/icons/next.svg';
 import MyPrevSvg from '@/assets/icons/prev.svg';
-import { CalendarText, dayNames, monthNames, years } from '@/constants';
+import { CalendarText, monthNames, years } from '@/constants';
 import {
   getNumberOfDaysInMonth,
   getSortedDays,
@@ -31,7 +31,7 @@ import {
 } from './styles';
 import { CalendarProps, IsPopUpOpenStateProps } from './types';
 
-const { prevAlt, nextAlt, hideText, showText } = CalendarText;
+const { prevAlt, nextAlt, hideText, showText, weekdayLabel } = CalendarText;
 
 const Calendar: FC<CalendarProps> = ({
   minDate,
@@ -43,8 +43,8 @@ const Calendar: FC<CalendarProps> = ({
   variant,
   beginningOfTheWeek,
   holidays,
-  $holidayColor,
-  $textColor,
+  holidaycolor,
+  textcolor,
   isClearButton,
   isTodoList,
   withoutTodo,
@@ -181,12 +181,12 @@ const Calendar: FC<CalendarProps> = ({
                 getTimeFromState(1, currentYear, currentMonth)
             }
           >
-            <Icon src={MyPrevSvg} alt={prevAlt} />
+            <Icon src={MyPrevSvg} alt={prevAlt} aria-label={prevAlt} />
           </IconWrapper>
           <Title>
             {!isPopUpOpen.isMonthOpen && (
               <Month
-                $textColor={$textColor}
+                textcolor={textcolor}
                 onClick={onHandlerCalendarPopup('isMonthOpen')}
               >
                 {monthNames[currentMonth]}
@@ -196,8 +196,8 @@ const Calendar: FC<CalendarProps> = ({
               <TwoColGrid>
                 {monthNames.map((month, index) => (
                   <Month
-                    $textColor={$textColor}
-                    currentmonth={index}
+                    textcolor={textcolor}
+                    currentMonth={index}
                     key={month}
                     onClick={(e) => onHandlerChosenPopUpType(e, 'isMonthOpen')}
                   >
@@ -210,8 +210,8 @@ const Calendar: FC<CalendarProps> = ({
               <TwoColGrid>
                 {years.map((year) => (
                   <Month
-                    $textColor={$textColor}
-                    currentyear={year}
+                    textcolor={textcolor}
+                    currentYear={year}
                     key={year}
                     onClick={(e) => onHandlerChosenPopUpType(e, 'isYearOpen')}
                   >
@@ -222,7 +222,7 @@ const Calendar: FC<CalendarProps> = ({
             )}
             {!isPopUpOpen.isYearOpen && (
               <Year
-                $textColor={$textColor}
+                textcolor={textcolor}
                 onClick={onHandlerCalendarPopup('isYearOpen')}
               >
                 {currentYear}
@@ -241,14 +241,18 @@ const Calendar: FC<CalendarProps> = ({
                 )
             }
           >
-            <Icon src={MyNextSvg} alt={nextAlt} />
+            <Icon src={MyNextSvg} alt={nextAlt} aria-label={nextAlt} />
           </IconWrapper>
         </Header>
         <Main>
           {variant !== 'year' && (
             <SevenColGrid>
               {getSortedDays(beginningOfTheWeek).map((weekday) => (
-                <Weekday $textColor={$textColor} key={weekday}>
+                <Weekday
+                  textcolor={textcolor}
+                  key={weekday}
+                  aria-label={weekdayLabel}
+                >
                   {weekday}
                 </Weekday>
               ))}
@@ -265,7 +269,7 @@ const Calendar: FC<CalendarProps> = ({
             defaultValue={defaultValue}
             holidays={holidays}
             withRange={withRange}
-            $holidayColor={$holidayColor}
+            holidaycolor={holidaycolor}
             showWeekend={showWeekend}
             isDateByInput={isDateByInput}
             isByWeek={variant === 'week'}

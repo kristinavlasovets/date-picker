@@ -9,7 +9,7 @@ export interface CalendarGridProps {
   defaultValue: Date;
   holidays: { month: number; day: number }[];
   withRange: boolean;
-  $holidayColor: string;
+  holidaycolor: string;
   beginningOfTheWeek: string;
   showWeekend: boolean;
   isByYear?: boolean;

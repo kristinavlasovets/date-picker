@@ -9,6 +9,11 @@ export enum CalendarText {
   nextAlt = 'Next',
   hideText = 'Hide weekends',
   showText = 'Show weekends',
+  weekdayLabel = 'Weekday',
+}
+
+export enum DayText {
+  dayLabel = 'Day',
 }
 
 export enum DateSelectorText {

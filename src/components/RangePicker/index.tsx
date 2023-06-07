@@ -1,6 +1,9 @@
 import React, { FC, useState } from 'react';
+import { ThemeProvider } from 'styled-components';
 
 import { DayPickerText } from '@/constants';
+import { GlobalStyles } from '@/styles/globalStyles';
+import { commonTheme } from '@/styles/theme';
 
 import DayPicker from '../DayPicker';
 import ErrorBoundary from '../ErrorBoundary';
@@ -17,8 +20,8 @@ const RangePicker: FC<RangePickerProps> = ({
   maxDate,
   variant,
   beginningOfTheWeek,
-  $holidayColor,
-  $textColor,
+  holidaycolor,
+  textcolor,
   holidays,
 }) => {
   const [startDate, setStartDate] = useState<Date>(defaultStartDate);
@@ -41,46 +44,49 @@ const RangePicker: FC<RangePickerProps> = ({
   };
 
   return (
-    <ErrorBoundary>
-      <Wrapper>
-        <DayPicker
-          title={titleFrom}
-          defaultValue={startDate}
-          minDate={minDate}
-          maxDate={maxDate}
-          startDate={startDate}
-          endDate={endDate}
-          variant={variant}
-          holidays={holidays}
-          $holidayColor={$holidayColor}
-          $textColor={$textColor}
-          isClearButton={isClearButton}
-          withoutTodo={withoutTodo}
-          withRange={withRange}
-          beginningOfTheWeek={beginningOfTheWeek}
-          onHandlerRangeDate={onHandlerStartDate}
-          onHandlerShowButton={onHandlerShowButton}
-        />
-        <DayPicker
-          title={titleTo}
-          defaultValue={endDate}
-          minDate={minDate}
-          maxDate={maxDate}
-          startDate={startDate}
-          endDate={endDate}
-          variant={variant}
-          holidays={holidays}
-          $holidayColor={$holidayColor}
-          $textColor={$textColor}
-          isClearButton={isClearButton}
-          withoutTodo={withoutTodo}
-          withRange={withRange}
-          beginningOfTheWeek={beginningOfTheWeek}
-          onHandlerRangeDate={onHandlerEndDate}
-          onHandlerShowButton={onHandlerShowButton}
-        />
-      </Wrapper>
-    </ErrorBoundary>
+    <ThemeProvider theme={commonTheme}>
+      <GlobalStyles theme={commonTheme} />
+      <ErrorBoundary>
+        <Wrapper>
+          <DayPicker
+            title={titleFrom}
+            defaultValue={startDate}
+            minDate={minDate}
+            maxDate={maxDate}
+            startDate={startDate}
+            endDate={endDate}
+            variant={variant}
+            holidays={holidays}
+            holidaycolor={holidaycolor}
+            textcolor={textcolor}
+            isClearButton={isClearButton}
+            withoutTodo={withoutTodo}
+            withRange={withRange}
+            beginningOfTheWeek={beginningOfTheWeek}
+            onHandlerRangeDate={onHandlerStartDate}
+            onHandlerShowButton={onHandlerShowButton}
+          />
+          <DayPicker
+            title={titleTo}
+            defaultValue={endDate}
+            minDate={minDate}
+            maxDate={maxDate}
+            startDate={startDate}
+            endDate={endDate}
+            variant={variant}
+            holidays={holidays}
+            holidaycolor={holidaycolor}
+            textcolor={textcolor}
+            isClearButton={isClearButton}
+            withoutTodo={withoutTodo}
+            withRange={withRange}
+            beginningOfTheWeek={beginningOfTheWeek}
+            onHandlerRangeDate={onHandlerEndDate}
+            onHandlerShowButton={onHandlerShowButton}
+          />
+        </Wrapper>
+      </ErrorBoundary>
+    </ThemeProvider>
   );
 };
 

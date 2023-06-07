@@ -54,7 +54,7 @@ export const Month = styled.button<CalendarStylesProps>`
   cursor: pointer;
   font-weight: ${({ theme }) => theme.fontWeights.l};
   font-size: ${({ theme }) => theme.fontSizes.s}px;
-  color: ${({ theme, $textColor }) => $textColor || theme.colors.DARK_GRAY};
+  color: ${({ theme, textcolor }) => textcolor || theme.colors.DARK_GRAY};
   padding-right: ${({ theme }) => theme.paddings.s}px;
 
   &:hover {
@@ -70,7 +70,7 @@ export const Year = styled.button<CalendarStylesProps>`
   cursor: pointer;
   font-weight: ${({ theme }) => theme.fontWeights.l};
   font-size: ${({ theme }) => theme.fontSizes.s}px;
-  color: ${({ theme, $textColor }) => $textColor || theme.colors.DARK_GRAY};
+  color: ${({ theme, textcolor }) => textcolor || theme.colors.DARK_GRAY};
 
   &:hover {
     transform: scale(1.2);
@@ -119,7 +119,7 @@ export const TwoColGrid = styled.div`
 export const Weekday = styled.p<CalendarStylesProps>`
   font-weight: ${({ theme }) => theme.fontWeights.l};
   font-size: ${({ theme }) => theme.fontSizes.s}px;
-  color: ${({ theme, $textColor }) => $textColor || theme.colors.DARK_GRAY};
+  color: ${({ theme, textcolor }) => textcolor || theme.colors.DARK_GRAY};
   padding-left: ${({ theme }) => theme.paddings.s}px;
 `;
 

@@ -37,8 +37,8 @@ const meta: Meta<typeof RangePicker> = {
       options: ['sunday', 'monday'],
       control: { type: 'radio' },
     },
-    $holidayColor: { control: 'color' },
-    $textColor: { control: 'color' },
+    holidaycolor: { control: 'color' },
+    textcolor: { control: 'color' },
   },
 };
 

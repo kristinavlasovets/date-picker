@@ -16,9 +16,9 @@ export const DayItem = styled.button<DayProps>`
   font-size: ${({ theme }) => theme.fontSizes.xs}px;
   cursor: pointer;
 
-  background-color: ${({ variant, $holidayColor }) =>
-    variant === 'holiday' && $holidayColor
-      ? $holidayColor
+  background-color: ${({ variant, holidaycolor }) =>
+    variant === 'holiday' && holidaycolor
+      ? holidaycolor
       : DayItemVariants[variant].background};
   border-radius: ${({ variant }) => DayItemVariants[variant].borderRadius};
   color: ${({ variant, $showWeekend }) =>

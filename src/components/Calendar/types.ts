@@ -6,12 +6,12 @@ export interface CalendarProps {
   maxDate: Date;
   defaultValue: Date;
   holidays: { month: number; day: number }[];
-  $textColor: string;
-  $holidayColor: string;
+  textcolor: string;
+  holidaycolor: string;
   isClearButton: boolean;
   isTodoList: boolean;
-  currentmonth?: number;
-  currentyear?: number;
+  currentMonth?: number;
+  currentYear?: number;
   withoutTodo: boolean;
   withRange: boolean;
   startDate?: Date;
@@ -27,7 +27,7 @@ export interface CalendarProps {
 
 export type CalendarStylesProps = Pick<
   CalendarProps,
-  '$textColor' | 'currentmonth' | 'currentyear'
+  'textcolor' | 'currentMonth' | 'currentYear'
 >;
 
 export interface IsPopUpOpenStateProps {

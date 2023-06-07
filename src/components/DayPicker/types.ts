@@ -5,8 +5,8 @@ export interface DayPickerProps {
   variant: 'day' | 'week' | 'month';
   beginningOfTheWeek: 'sunday' | 'monday';
   holidays: { month: number; day: number }[];
-  $holidayColor: string;
-  $textColor: string;
+  holidaycolor: string;
+  textcolor: string;
   title?: string;
   isClearButton: boolean;
   withoutTodo: boolean;

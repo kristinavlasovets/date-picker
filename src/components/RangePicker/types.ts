@@ -4,8 +4,8 @@ export interface RangePickerProps {
   variant: 'day' | 'week' | 'month';
   beginningOfTheWeek: 'sunday' | 'monday';
   holidays: { month: number; day: number }[];
-  $holidayColor: string;
-  $textColor: string;
+  holidaycolor: string;
+  textcolor: string;
   defaultStartDate: Date;
   defaultEndDate: Date;
   startDate?: Date;

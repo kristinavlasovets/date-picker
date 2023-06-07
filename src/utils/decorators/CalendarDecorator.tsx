@@ -22,7 +22,7 @@ export const CalendarDecorator = (WrappedComponent: React.ElementType) =>
       currentMonth,
       currentYear,
       defaultValue,
-      $holidayColor,
+      holidaycolor,
       holidays,
       isDateByInput,
       maxDate,
@@ -34,6 +34,7 @@ export const CalendarDecorator = (WrappedComponent: React.ElementType) =>
       withRange,
       isByYear,
       isByWeek,
+      beginningOfTheWeek,
       onHandlerSelectDate,
     } = props;
     if (isByWeek) {
@@ -42,8 +43,14 @@ export const CalendarDecorator = (WrappedComponent: React.ElementType) =>
 
       const totalDays = useMemo(
         () =>
-          getRange(1, getNumberOfDaysInMonth(currentYear, currentMonth) + 1),
-        [currentYear, currentMonth]
+          getRange(
+            1,
+            getNumberOfDaysInMonth(currentYear, currentMonth) + 1,
+            currentMonth,
+            currentYear,
+            beginningOfTheWeek
+          ),
+        [beginningOfTheWeek, currentMonth, currentYear]
       );
 
       const currentMonthWeeks = useMemo(
@@ -81,7 +88,7 @@ export const CalendarDecorator = (WrappedComponent: React.ElementType) =>
                   onClick={onHandlerSelectDate}
                   currentday={day}
                   key={day}
-                  $holidayColor={$holidayColor}
+                  holidaycolor={holidaycolor}
                   $showWeekend={showWeekend}
                   variant={getDayVariant({
                     minDate,

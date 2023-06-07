@@ -51,8 +51,8 @@ const meta: Meta<typeof DayPicker> = {
       options: ['sunday', 'monday'],
       control: { type: 'radio' },
     },
-    $holidayColor: { control: 'color' },
-    $textColor: { control: 'color' },
+    holidaycolor: { control: 'color' },
+    textcolor: { control: 'color' },
   },
 };
 

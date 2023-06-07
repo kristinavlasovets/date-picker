@@ -1,2 +1,2 @@
-export * from './DayPicker';
-export * from './RangePicker';
+export { default as DayPicker } from './DayPicker';
+export { default as RangePicker } from './RangePicker';
