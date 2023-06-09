@@ -1,136 +1,64 @@
-# Tестовое задание библиотека Modsen DatePicker
+# Description
 
+![daypicker](./screenshots/daypicker.png)
+![rangepicker](./screenshots/rangepicker.png)
 
-## Содержание
+Basic and extensible Javascript library Date Picker for working with different types of calendar. Includes DayPicker and RangePicker components.
 
+- Supports ability to jump to a user-specified date in the calendar.
+- Supports ability to add a list of tasks when clicking on a specific day and save them to localStorage.
+- Supports possibility to switch to previous/next week/month/year.
+- Supports possibility to select the minimum and maximum date of the calendar.
+- Supports ability to hide/show weekends and highlight holidays in a different color.
+- Supports selecting the calendar type (by year, week and month).
+- Supports selecting a range for the calendar.
+- In the RangePicker component, the first calendar provides a start date selection on both click and input from the DateSelector component panel. Similarly for the end date of the period in the second calendar. This provides more convenient functionality for the user to view the selected period and change it. This library is extensible, so in the future the resulting range can be used for the specific purposes of a particular application.
 
-- [Техническое задание](#Техническое-задание)
-- [Используемые технологии](#Используемые-технологии)
-- [Структура проекта](#Структура-проекта)
-- [Тестирование](#Тестирование)
-- [Как начать](#Как-начать)
-- [Полезные ссылки](#Полезные-ссылки)
+## Overview
 
+- [Online overview](https://taupe-malasada-ce996f.netlify.app/?path=/story/components-daypicker--default) is also available!
 
-## Техническое задание
-Необходимо реализовать библиотеку Javascript - ***DatePicker***, для работы с различными видами календаря.
-Цель состоит в том, чтобы создать базовую библиотеку, которую можно настраивать и расширять.
+## Installation
 
+```
+npm i @kristinavlasovets/date-picker-modsen
+or
+yarn add @kristinavlasovets/date-picker-modsen
+```
 
-#### Необходимый функционал:
+### Components:
 
+```
+<DayPicker />
+<RangePicker />
+```
 
-- Просмотр календаря
-- Выбор диапазона для календаря
-- Дефолтный календарь с заранее установленным диапазоном 
-- Возможность выбора начала недели(с понедельника или воскресенья)
-- Выбор вида календаря (по неделям, месяцам и т.д.)
-- Реализовать возможность при клике на определенный день добавлять список задач и
-сохранять их в localStorage
-- Возможность переключения на предыдущий(ую)/следующий(ую) неделю/месяц/год
-- Возможность выбора максимальной даты календаря
-- Возможность выбора минимальной даты для календаря
-- Возможность скрывать/показывать выходные дни и выделять праздничные дни другим цветом
-- Возможность перейти в календаре на введенную пользователем дату
-- Стилизация календаря
+#### Main props:
 
+```
+minDate: Date;
+maxDate: Date;
+variant: 'month' | 'week' | 'year';
+beginningOfTheWeek: 'sunday' | 'monday';
+holidays: { month: number; day: number }[];
+holidaycolor: string;
+textcolor: string;
+defaultStartDate: Date;
+defaultEndDate: Date;
+startDate?: Date;
+endDate?: Date;
+```
 
-#### Дополнительный функционал:
+##### Keywords:
 
+[calendar](https://www.npmjs.com/search?q=keywords:calendar)
 
-- Развернуть приложение на хостинге (heroku, vercel)
-- Настроить CI/CD, используя [GitHub Actions](https://github.com/features/actions).
-- Собрать проект с нуля(с настройками всех конфигов: rollup, eslint, prettier, husky)
+[date-picker](https://www.npmjs.com/search?q=keywords:date-picker)
 
+[todo](https://www.npmjs.com/search?q=keywords:todo)
 
-#### Пример графического представления:
+[react](https://www.npmjs.com/search?q=keywords:react)
 
+[storybook](https://storybook.js.org/docs/basics/introduction/)
 
-Ссылка на макет: [Макет "DatePicker"](https://www.figma.com/file/PGg4P38QaPjUzasxC2GSkv/Modsen-Datepicker?node-id=0%3A1&t=dWZj8oM41qBje0bv-0).
-
-
-#### Также проект предполагает:
-- Разделить библиотеку на два основных компонента: представления и логики. Для реализации логики приложения необходимо использовать порождающий паттерн программирования ***"Декоратор"***, который позволяет динамически добавлять объектам новую функциональность, оборачивая их в полезные «обёртки» (см. подробнее [паттерн Декоратор](https://refactoring.guru/ru/design-patterns/decorator)). При помощи паттерна создать сервисный класс, в котором вы будете задавать конфигурацию и создавать календарь.
-
-
-- Настроить конфигурации ***babel***, ***eslint***, ***prettier***.
-
-- Подключить и настроить бандлер ***Rollup*** для сборки проекта в библиотеку.
-
-- Подключить и настроить ***Storybook*** для проверки работоспособности вашей библиотеки.
-
-- Добавить обработку ошибок через паттерн ***Error Boundaries***
-
-- Добавить проверку типов в React компонентах, передаваемых параметров и подобных объектов.
-
-- Использовать алиасы для импортирования файлов.
-
-- В приложении допускается использование языка typescript.
-
-- Нельзя использовать какие-либо сторонние библиотеки.
-
-
-## Используемые технологии
-
-
-### Для react
-- ***node.js*** - программная платформа, основанная на движке V8 (транслирующем JavaScript в машинный код).
-- ***babel*** - транспайлер, преобразующий код из одного стандарта в другой.
-- ***eslint*** - линтер для JavaScript кода.
-- ***yarn*** - менеджер пакетов.
-- ***rollup*** - сборщик ES-модулей.
-- ***storybook*** - инструмент, используемый для разработки компонентов пользовательского интерфейса в изоляции.
-- ***react*** - JavaScript-библиотека для создания пользовательских интерфейсов.
-- ***prop-types*** - набор валидаторов, которые могут быть использованы для проверки получаемых данных.
-- ***styled-components*** - система стилизации react компонентов.
-- ***jest*** — интеграционное тестирование (rtl) + unit-тестирование.
-
-
- ### Для react native
-Will be soon...
-
-
-## Структура проекта
-
-
-[Структура проекта](https://github.com/mkrivel/structure)
-
-
-## Тестирование
-
-
-Реализовать e2e тестирование c полным покрытием функционала приложения:
-- Сервис для конфигурации DatePicker-компонента.
-- Графическое (компонент модуля и т.д.)
-
-
-
-
-## Полезные ссылки
-
-
-[React](https://reactjs.org/docs/getting-started.html)
-
-
-[Rollup](https://rollupjs.org/guide/en/)
-
-
-[Storybook](https://storybook.js.org/docs/basics/introduction/)
-
-
-[Eslint](https://eslint.org/docs/user-guide/configuring)
-
-
-[Babel](https://babeljs.io/docs/en/configuration)
-
-
-[Тестирование Jest](https://jestjs.io/ru/docs/getting-started)
-
-
-[Styled-components](https://www.styled-components.com/docs)
-
-
-[Husky](https://dev.to/ivadyhabimana/setup-eslint-prettier-and-husky-in-a-node-project-a-step-by-step-guide-946)
-
-
-
+[styled-components](https://www.npmjs.com/package/styled-components)

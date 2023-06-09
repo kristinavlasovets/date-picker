@@ -1,0 +1,15 @@
+export enum Colors {
+  DARK_GRAY = '#333333',
+  GRAY = '#AAAAAA',
+  LIGHT_GRAY = '#F1F1F1',
+  BORDER_GRAY = '#E1E1E1',
+  DATE_BORDER_GRAY = '#DDDDDD',
+  DATE_TEXT_GRAY = '#BBBBBB',
+  DARK_BLUE = '#2F80ED',
+  BLUE = '#82B3F4',
+  LIGHT_BLUE = '#EBF3FE',
+  PURPLE = '#FFDEFF',
+  WHITE = '#FFFFFF',
+  BLACK = '#000000',
+  PINK = '#FFC0CB',
+}
